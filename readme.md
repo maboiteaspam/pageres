@@ -21,7 +21,7 @@ $ npm install --save pageres
 ```js
 const Pageres = require('pageres');
 
-const pageres = new Pageres({delay: 2})
+const pageres = new Pageres({delay: 2, script: 'path/to/the/script_to_inject.js'})
 	.src('yeoman.io', ['480x320', '1024x768', 'iphone 5s'], {crop: true})
 	.src('todomvc.com', ['1280x1024', '1920x1080'])
 	.dest(__dirname)
@@ -128,6 +128,22 @@ Custom user agent.
 Type: `object`
 
 Custom HTTP request headers.
+
+##### script
+
+Type: `string`  
+Default: `false`
+
+A path to a script ot inject into the page before the screenshot. 
+Please review this [example](https://github.com/maboiteaspam/screenshot-stream/blob/script-include/test/fixtures/test-phantomjs-script.js) 
+for more details.
+
+##### timeout
+
+Type: `number`  
+Default: `3`
+
+A timeout to kill phantomjs in case your injected script fails.
 
 
 ### pageres.src(url, sizes, options)
